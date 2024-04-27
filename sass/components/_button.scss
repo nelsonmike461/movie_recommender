@@ -1,0 +1,144 @@
+.btn__watched {
+  background-color: $color-primary;
+  border-radius: 100px;
+  padding: 0.5rem;
+  border: none;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $color-grey-light-1;
+  cursor: pointer;
+  justify-self: center;
+  position: absolute;
+  left: 17rem;
+  top: 14rem;
+  width: 18rem;
+
+  @include respond(tab-port) {
+    font-size: 1rem;
+    left: 13rem;
+    top: 12.5rem;
+    padding: 0.5rem;
+    width: 11rem;
+  }
+
+  @include respond(phone) {
+    left: 17rem;
+    top: 1rem;
+  }
+
+  &__watched:active {
+    background-color: $color-primary;
+  }
+
+  &__watched:focus {
+    outline: none;
+    box-shadow: 0 0 3px $color-primary-light;
+  }
+
+  &__watched:hover {
+    background-color: $color-primary-light-2;
+  }
+}
+
+.lr__btn {
+  display: inline-block;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.4rem 4rem;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background-color: $color-primary;
+  width: 100%;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 2px 4px rgba(206, 137, 247, 0.5);
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: none;
+  }
+}
+
+.recommendation-btn {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: $color-primary;
+  font-weight: 600;
+  padding: 1rem;
+  border-radius: 100px;
+  border: none;
+  outline-offset: 0.2rem;
+  background-color: $color-grey-light-1;
+  transition: all 0.2s;
+
+  @include respond(tab-port) {
+    font-size: 1.2rem;
+    padding: 0.8rem;
+    margin-right: 2rem;
+    font-weight: 700;
+  }
+
+  @include respond(phone) {
+    display: inline-block;
+    padding: 2rem;
+    width: 100%;
+    font-size: 1.2rem;
+    color: $color-white;
+    position: fixed;
+    bottom: 0rem;
+    left: 0rem;
+    background-color: $color-primary-light;
+    border-radius: 0;
+
+    &:focus {
+      background-color: $color-primary-light;
+      outline: none;
+      transform: translateY(0.5px);
+    }
+  }
+
+  &:hover {
+    outline: 0.2rem solid $color-white;
+    background-color: $color-grey-light-2;
+    transform: translateY(-1px);
+  }
+
+  &:focus {
+    outline: none;
+    transform: translateY(0.5px);
+  }
+}
+.hidden {
+  display: none !important;
+}
+
+.delete-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  position: absolute;
+  bottom: 1rem;
+  border: none;
+  color: $color-white;
+  background-color: $color-black;
+
+  &:focus {
+    background-color: $color-grey-dark-3;
+    transform: translateY(1px);
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  @include respond(phone) {
+    padding: 0.2rem 1rem;
+    bottom: 0.3rem;
+  }
+}

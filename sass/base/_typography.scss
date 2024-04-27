@@ -1,0 +1,14 @@
+.heading {
+  font-size: 2.8rem;
+  display: inline-block;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(206, 137, 247, 0.5);
+  margin-bottom: 1rem;
+  background-image: linear-gradient(
+    to right,
+    $color-primary-light,
+    $color-primary
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+}

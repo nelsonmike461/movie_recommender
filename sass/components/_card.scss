@@ -1,0 +1,302 @@
+.movie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2.5rem;
+  background-color: $color-primary;
+  height: 50rem;
+  width: 40rem;
+  overflow: auto;
+  border-radius: 1rem;
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2);
+
+  @include respond(tab-port) {
+    width: 30rem;
+    height: 48rem;
+  }
+
+  @include respond(phone) {
+    margin: 0;
+    border-radius: 0;
+    height: 100vh;
+    width: 100vh;
+    background-color: $color-grey-light-2;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+    background: transparent;
+    background: transparent;
+  }
+
+  &__layout {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__img {
+    height: 8rem;
+    border-radius: 0.5rem;
+    margin: 1rem 2rem;
+
+    @include respond(tab-port) {
+      height: 7rem;
+    }
+  }
+
+  &__trg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.4rem;
+    line-height: 1.5;
+
+    @include respond(tab-port) {
+      font-size: 1rem;
+    }
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    letter-spacing: 0.08rem;
+    font-weight: 600;
+
+    @include respond(tab-port) {
+      font-size: 1.3rem;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2.5rem;
+    background-color: $color-primary;
+    height: 50rem;
+    width: 40rem;
+    overflow: auto;
+    border-radius: 1rem;
+    padding: 1rem;
+
+    @include respond(tab-port) {
+      width: 30rem;
+      height: 48rem;
+    }
+
+    @include respond(phone) {
+      display: none;
+    }
+
+    &::-webkit-scrollbar {
+      width: 0;
+      background: transparent;
+      background: transparent;
+      background: transparent;
+    }
+  }
+}
+
+.mobile__details {
+  position: relative;
+  grid-column: 1 / -1;
+  display: none;
+
+  @include respond(phone) {
+    display: block;
+  }
+}
+
+.movie__card {
+  display: flex;
+  margin: 1rem;
+  background-color: $color-grey-light-1;
+  width: 30rem;
+  height: 12rem;
+  border-radius: 0.5rem;
+  align-items: center;
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, opacity 1s ease-out;
+  outline-offset: 0.2rem;
+  animation: slide-up 0.5s ease-out;
+
+  @include respond(tab-port) {
+    width: 24rem;
+  }
+
+  @include respond(phone) {
+    display: grid;
+    grid-template-columns: 8rem 1fr;
+    width: 30rem;
+    height: auto;
+  }
+
+  &:hover {
+    outline: 0.2rem solid $color-white;
+    border-radius: 0;
+    transform: translateY(-0.1rem) scale(1);
+  }
+
+  &:active {
+    outline: none;
+    transform: translateY(1px);
+  }
+
+  &:first-child {
+    margin-top: 2rem;
+  }
+
+  &:last-child {
+    margin-bottom: 2rem;
+
+    @include respond(phone) {
+      margin-bottom: 8rem;
+    }
+  }
+}
+
+.details {
+  background-color: $color-grey-light-1;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  height: 100%;
+  position: relative;
+  overflow: auto;
+
+  @include respond(tab-port) {
+    width: 26rem;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+    background: transparent;
+    background: transparent;
+  }
+}
+
+.top {
+  display: flex;
+}
+
+.gr {
+  font-size: 1.3rem;
+
+  @include respond(tab-port) {
+    font-size: 1.1rem;
+  }
+}
+
+span {
+  color: #686767;
+}
+
+.card-text {
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 1.3rem;
+  margin: 1rem;
+
+  @include respond(tab-port) {
+    font-size: 1.1rem;
+  }
+}
+
+.watchlist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5rem;
+
+  @include respond(phone) {
+    gap: 2rem;
+  }
+
+  &__h1 {
+    margin: 2rem 0 2rem 5rem;
+
+    @include respond(phone) {
+      margin: 1rem 0 1rem 0.6rem;
+      font-size: 1.4rem;
+    }
+  }
+
+  &__movie--poster {
+    height: 100%;
+  }
+  &__description {
+    height: 13rem;
+    overflow-y: auto;
+    scrollbar-width: none;
+
+    @include respond(tab-port) {
+      height: 8.5rem;
+    }
+    @include respond(phone) {
+      height: 6rem;
+    }
+  }
+
+  &__card {
+    display: flex;
+    height: 30rem;
+    width: 60rem;
+    gap: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: opacity 1s ease-out;
+    border: 1px solid $color-grey-light-2;
+    background-color: $color-grey-light-1;
+    position: relative;
+
+    @include respond(tab-port) {
+      height: 25rem;
+      width: 55rem;
+    }
+
+    @include respond(phone) {
+      height: 15rem;
+      width: 35rem;
+      gap: 1rem;
+    }
+
+    &:last-child {
+      margin-bottom: 5rem;
+
+      @include respond(phone) {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+
+  &__heading {
+    padding-top: 2rem;
+    padding-left: 0.5rem;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+
+    @include respond(phone) {
+      padding-top: 0.5rem;
+      font-size: 1.4rem;
+      margin-bottom: 0;
+    }
+  }
+
+  &__details {
+    font-size: 1.3rem;
+    padding: 0.5rem;
+    line-height: 1.3;
+
+    & > ul {
+      list-style: none;
+      margin-bottom: 0.8rem;
+
+      @include respond(phone) {
+        margin-bottom: 0.15rem;
+      }
+    }
+
+    @include respond(phone) {
+      font-size: 0.9rem;
+    }
+  }
+}

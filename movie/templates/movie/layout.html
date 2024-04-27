@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="{% static 'movie/styles.css' %}" />
+	<link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:wght@400;700;800;900&display=swap"
+		rel="stylesheet">
+	<link rel="shortcut icon" type="image/png" href="img/favicon.png">
+	<script src="{% static 'movie/movie.js' %}" defer></script>
+	<title>Recommender</title>
+</head>
+<div class="navigation">
+	<input type="checkbox" class=" navigation__checkbox" id="navi-toggle">
+
+	<label for="navi-toggle" class="navigation__button">
+		<div class="navigation__icon">&nbsp;</div>
+	</label>
+
+	<div class="navigation__background">&nbsp;</div>
+
+	<nav class="navigation__nav">
+		<ul class="navigation__list">
+			<li class="navigation__item"><a href="{% url 'recommendations' %}" class="navigation__link">Home</a></li>
+			<li class="navigation__item"><a href="{% url 'watchlist' %}" class="navigation__link">Watchlist</a></li>
+			<li class="navigation__item"><a href="{% url 'logout' %}" class="navigation__link">Logout</a></li>
+		</ul>
+	</nav>
+</div>
+
+<header>
+	<nav class="navbar">
+		<div class="navbar__left">
+			<div class="logo">
+				<a href="{% url 'recommendations' %}"><img src="{% static 'movie/images/logo.svg' %}" alt="Logo" class="logo">
+				</a>
+			</div>
+			<div>
+				{% if user.is_authenticated %}
+				<h2 class="username">{{ user.username }}</h2>
+				{% endif %}
+			</div>
+		</div>
+		<!-- Search Bar -->
+		{% if user.is_authenticated %}
+		<form method="GET" action="{% url 'search_movie' %}" class="search">
+			<input type="text" name="q" class="search__input" placeholder="Search" autocomplete="off">
+			<button class="search__button" type="submit">
+				<svg class="search__icon">
+					<use xlink:href="{% static 'movie/images/sprite.svg' %}#icon-magnifying-glass"></use>
+				</svg>
+			</button>
+		</form>
+		{% endif %}
+		<!-- Recommendations Button -->
+		{% if user.is_authenticated %}
+		<button id="generate-recommendations-btn" class="recommendation-btn">Generate Recommendations</button>
+		<form id="generate-recommendations-form" method="POST" action="{% url 'generate' %}">
+			{% csrf_token %}
+			<input type="hidden" name="user_id" value="{{ request.user.id }}">
+		</form>
+		<ul class="nav-items">
+			<!-- User Watchlist -->
+			<li><a href="{% url 'watchlist' %}">Watchlist</a></li>
+			<li><a href="{% url 'logout' %}">Logout</a></li>
+			{% else %}
+			<li><a href="{% url 'login' %}">Login</a></li>
+			<li><a href="{% url 'register' %}">Register</a></li>
+			{% endif %}
+		</ul>
+	</nav>
+</header>
+
+<body>
+	<div class="container">
+		{% block body %}
+		{% endblock %}
+	</div>
+</body>
+
+</html>

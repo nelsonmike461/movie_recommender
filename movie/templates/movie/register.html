@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'movie/styles.css' %}" />
+	<link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:wght@400;700;800;900&display=swap"
+		rel="stylesheet">
+	<title>Register</title>
+</head>
+
+<body class="form__body">
+	<div class="Register__form">
+		<form action="{% url 'register' %}" method="POST">
+			<h2 class="heading">
+				Register
+			</h2>
+			{% csrf_token %}
+			<div class="form__group">
+				<input type="text" class="form__input" placeholder="Username" name="username" required autofocus
+					autocomplete="off">
+				<label for="username" class="form__label">Username</label>
+			</div>
+			<div class="form__group">
+				<input type="email" class="form__input" placeholder="Email address" name="email" required autocomplete="off">
+				<label for="email" class="form__label">Email address</label>
+			</div>
+			<div class="form__group">
+				<input class="form__input" type="password" name="password" placeholder="Password">
+				<label for="password" class="form__label">Password</label>
+			</div>
+			<div class="form__group">
+				<input class="form__input" type="password" name="confirmation" placeholder="Confirm Password">
+				<label for="password" class="form__label">Confirm Password</label>
+			</div>
+			<div class="form__group">
+				<button class="lr__btn" type="submit" value="Register">Register</button>
+			</div>
+		</form>
+		<div class="rl">Already have an account? <a href="{% url 'login' %}">Log In here.</a></div>
+		{% if message %}
+		<div>{{ message }}</div>
+		{% endif %}
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+{% extends "movie/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+<main>
+    <div class="movie__layout">
+        <div class="movie">
+            <!-- Search Results -->
+            {% if movies %}
+
+            {% for movie in movies %}
+            <div class="movie__card" data-imdb-id="{{ movie.imdb_id }}">
+                <img class="movie__img" src="https://image.tmdb.org/t/p/original/{{movie.poster_path}}">
+                <div class="movie__trg">
+                    <h4 class="movie__title">{{movie.original_title}}</h4>
+                    <p class="gr"><span>Genres:</span> {{ movie.genres }}</p>
+                    <p class="gr"><span>Rating:</span> {{movie.vote_average}}</p>
+                </div>
+                <div class="mobile__details">
+                    <!-- Show movie details -->
+                </div>
+            </div>
+            {% endfor %}
+
+            {% else %}
+            <!-- Display Nothing -->
+            {% endif %}
+
+            <!-- Recomended Movies -->
+            {% for movie in movie_list %}
+            <div class="movie__card" data-imdb-id="{{ movie.imdb_id }}">
+                <img class="movie__img" src="https://image.tmdb.org/t/p/original/{{movie.poster_path}}">
+                <div class="movie__trg">
+                    <h4 class="movie__title">{{ movie.original_title }}</h4>
+                    <p class="gr"><span>Genres:</span> {{ movie.genres }}</p>
+                    <p class="gr"><span>Rating:</span> {{ movie.vote_average }}</p>
+                </div>
+                <div class="mobile__details">
+                    <!-- Show movie details -->
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Details -->
+        <div class="movie__details">
+            <!-- Show movie details -->
+        </div>
+    </div>
+    </div>
+</main>
+{% endblock %}

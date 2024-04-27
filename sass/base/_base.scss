@@ -1,0 +1,32 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-family: "Open sans", sans-serif;
+  font-weight: 400;
+  font-size: 62.5%;
+}
+
+main {
+  margin: 0 auto;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: #dee2ff;
+
+  @include respond(phone) {
+    position: relative;
+    height: 100vh;
+  }
+}
+
+::selection {
+  background-color: $color-primary;
+  color: $color-grey-dark-3;
+}

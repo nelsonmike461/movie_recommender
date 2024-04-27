@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'movie/styles.css' %}" />
+	<link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:wght@400;700;800;900&display=swap"
+		rel="stylesheet">
+	<title>Login</title>
+</head>
+
+<body class="form__body">
+	<div class="form">
+		<form action="{% url 'login' %}" method="POST">
+			<h2 class="heading">
+				Login
+			</h2>
+			{% csrf_token %}
+			<div class="form__group">
+				<input type="text" name="username" class="form__input" placeholder="Username" required autofocus
+					autocomplete="off">
+				<label for="name" class="form__label">Username</label>
+			</div>
+			<div class="form__group">
+				<input class="form__input" type="password" name="password" placeholder="Password">
+				<label for="password" class="form__label">Password</label>
+			</div>
+			<div class="form__group">
+				<button class="lr__btn" type="submit" value="Login">Login</button>
+			</div>
+		</form>
+		<div class="rl">Don't have an account? <a href="{% url 'register' %}">Register here.</a></div>
+		{% if message %}
+		<div>{{ message }}</div>
+		{% endif %}
+	</div>
+</body>
+
+</html>
